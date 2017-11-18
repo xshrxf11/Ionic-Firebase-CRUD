@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Favourite Movie</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addMovie()">
+        <ion-icon name="add"></ion-icon>
+      </button> 
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>List Movies</h2>
+  <ion-list>
+    <ion-item-sliding *ngFor="let movie of moviesRef | async">
+      <ion-item>
+        <h2>Title : {{movie.movieTitle}}</h2>
+        <p>Price : RM {{movie.moviePrice}}.00</p>
+      </ion-item>
+      <ion-item-options side="right">
+          <button ion-button color="danger" (click)="deleteMovie(movie.$key)">
+              <ion-icon name="trash"></ion-icon>
+              Delete     
+          </button>
+          <button ion-button color="secondary" (click)="updateMovie(movie)">
+              <ion-icon name="create"></ion-icon>
+              Update
+          </button>
+      </ion-item-options>
+          
+    </ion-item-sliding>    
+          
+  </ion-list>
+    
+    
+</ion-content>
